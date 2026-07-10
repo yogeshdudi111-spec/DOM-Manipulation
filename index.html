@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>DOM Manipulation</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                background: #18c7e8;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                transition: 0.4s;
+            }
+
+            .card {
+                background: #fff;
+                width: 350px;
+                padding: 30px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            h2 {
+                margin-bottom: 20px;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+                margin: 10px 0;
+                border: none;
+                border-radius: 8px;
+                color: white;
+                font-size: 17px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .blue {
+                background: #3399ff;
+            }
+
+            .blue:hover {
+                background: #0077ff;
+            }
+
+            .pink {
+                background: #ff4fa3;
+            }
+
+            .pink:hover {
+                background: #ff1480;
+            }
+
+            .info {
+                margin-top: 15px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .dark {
+                background: #222;
+                color: white;
+            }
+
+            .dark .card {
+                background: #333;
+                color: white;
+            }
+            p {
+                font-size: 18px;
+                font-weight: bold;
+                margin: 8px 0 15px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="card">
+            <h2 id="heading">Welcome Yogesh👋</h2>
+
+            <button class="blue" onclick="changeName()">Change Name</button>
+
+            <p id="name"></p>
+
+            <button class="blue" onclick="attendanceToggle()">Show Attendance</button>
+
+            <p id="attendance"></p>
+
+            <button class="blue" onclick="darkMode()">Dark Mode</button>
+
+            <p id="status"></p>
+
+            <button class="pink" onclick="likeCourse()">Like Course</button>
+
+            <p id="like"></p>
+        </div>
+        <script>
+            let attendance = true;
+            let liked = false;
+
+            function changeName() {
+                document.getElementById("name").innerHTML = "Yogesh Dudi";
+            }
+
+            function attendanceToggle() {
+                if (attendance) {
+                    document.getElementById("attendance").innerHTML = "Attendance : 80%";
+                } else {
+                    document.getElementById("attendance").innerHTML = "Attendance : 100%";
+                }
+
+                attendance = !attendance;
+            }
+
+            function darkMode() {
+                document.body.classList.toggle("dark");
+
+                if (document.body.classList.contains("dark")) {
+                    document.getElementById("status").innerHTML = "Dark Mode : ON";
+                } else {
+                    document.getElementById("status").innerHTML = "Dark Mode : OFF";
+                }
+            }
+
+            function likeCourse() {
+                let like = document.getElementById("like");
+
+                if (!liked) {
+                    like.innerHTML = "❤️ Liked";
+                    like.style.color = "deeppink";
+                    alert("🎉 Course Liked Successfully!");
+                } else {
+                    like.innerHTML = "Not Liked";
+                    like.style.color = "";
+                    alert("Like Removed!");
+                }
+
+                liked = !liked;
+            }
+        </script>
+    </body>
+</html>
